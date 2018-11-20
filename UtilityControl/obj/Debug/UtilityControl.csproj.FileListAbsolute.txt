@@ -1,0 +1,6 @@
+C:\Program Files (x86)\Steam\steamapps\common\Celeste\Mods\UtilityControl\UtilityControl\obj\Debug\UtilityControl.csprojAssemblyReference.cache
+C:\Program Files (x86)\Steam\steamapps\common\Celeste\Mods\UtilityControl\UtilityControl\obj\Debug\UtilityControl.csproj.CoreCompileInputs.cache
+C:\Program Files (x86)\Steam\steamapps\common\Celeste\Mods\UtilityControl\UtilityControl\bin\Debug\UtilityControl.dll
+C:\Program Files (x86)\Steam\steamapps\common\Celeste\Mods\UtilityControl\UtilityControl\bin\Debug\UtilityControl.pdb
+C:\Program Files (x86)\Steam\steamapps\common\Celeste\Mods\UtilityControl\UtilityControl\obj\Debug\UtilityControl.dll
+C:\Program Files (x86)\Steam\steamapps\common\Celeste\Mods\UtilityControl\UtilityControl\obj\Debug\UtilityControl.pdb

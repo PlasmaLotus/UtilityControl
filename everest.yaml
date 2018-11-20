@@ -1,0 +1,13 @@
+- Name: UtilityControl
+  Version: 1.0.0
+  DLL: UtilityControl/bin/Debug/UtilityControl.dll
+  Dependencies:
+    - Name: Everest
+      Version: 1.525.0
+      
+- Name: OutbackHelper
+  Version: 1.0.0
+  DLL: OutbackHelper.dll
+  Dependencies:
+    - Name: Everest
+      Version: 1.525.0

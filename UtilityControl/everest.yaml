@@ -1,0 +1,6 @@
+﻿- Name: UtilityControl
+  Version: 1.0.0
+  DLL: bin/Debug/UtilityControl.dll
+  Dependencies:
+    - Name: Everest
+      Version: 1.0.0
