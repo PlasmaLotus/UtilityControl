@@ -20,12 +20,15 @@ namespace Celeste.Mod.UtilityControl
         private float startDisappearTime;
         private float currentDisappearTime;
         private PlayerCollider collider;
-        private Sprite icon;
+
+
+        private Image popblock;
+        private Image outline;
 
         private Color starterColor = new Color(0.77f, 0.91f, 0.27f);
         private List<Solid> PopList;
         private bool emittedFire = false;
-        private List<Image> outline;
+        
         private float bounceSFXDelay;
         private Wiggler moveWiggler;
         private Vector2 moveWigglerDir;
@@ -34,17 +37,32 @@ namespace Celeste.Mod.UtilityControl
         private Coroutine outlineFader;
         private List<Image> images;
         private Image image;
-
+        private PopColor popColor;
+        private Color color;
         private enum DisappearTimes
         {
             Fast = 5,
             Medium = 10,
             Slow = 15
         }
-        private enum PopColor
+        public enum PopColor
         {
-
+            Purple,
+            Blue,
+            Red,
+            Yellow,
+            Green,
+            Pink
         }
+        private Color[] popColorArray = new Color[]
+        {
+            new Color(1f, 0.3f, 1f),
+            new Color(0.3f, 0.3f, 1f),
+            new Color(1f, 0.3f, 0.3f),
+            new Color(1f, 1f, 0.3f),
+            new Color(0.3f, 1f, 0.3f),
+            new Color(1f, 0.5f, 0.8f)
+        };
 
         private Level level
         {
@@ -54,21 +72,33 @@ namespace Celeste.Mod.UtilityControl
             }
         }
 
-        //public PopBlock(Entity)
+        public PopBlock(EntityData data, Vector2 offset)
+            : this(data.Position + offset, data.Enum<PopColor>("color", PopColor.Pink))
+        {
+            //this.popColor =;
+            //this.popColor = data.Enum<PopColor>("color", PopColor.Pink);
+            //this.color = popColorArray[(int)this.popColor];
+        }
 
-        public PopBlock(EntityData data, Vector2 offset) : 
-            this(data.Position + offset)
-        { }
-
-        public PopBlock(Vector2 position):
+        public PopBlock(Vector2 position, PopColor color):
             base(position, 8f, 8f,false)
         {
-            //this.startDisappearTime = (float)data.Enum<TimedTouchSwitch.DisappearTimes>("startDisappearTime", TimedTouchSwitch.DisappearTimes.Slow);
-            this.icon = base.Get<Sprite>();
+            //Color            
+            //this.popColor = data.Enum<PopColor>("color", PopColor.Pink);
+            this.popColor = color;
+            this.color = popColorArray[(int)this.popColor];
+            //this
 
+            //this.startDisappearTime = (float)data.Enum<TimedTouchSwitch.DisappearTimes>("startDisappearTime", TimedTouchSwitch.DisappearTimes.Slow);
+            //this.image = base.Get<Sprite>();
+
+            /*
             this.collider = base.Get<PlayerCollider>();
             this.collider.OnCollide = new Action<Player>(this.OnPlayer);
+           
+            this.collider = new PlayerCollider(new Action<Player>(this.OnPlayer));
             base.Add(this.collider);
+            */
 
             this.moveWiggler = Wiggler.Create(0.8f, 2f, null, false, false);
             base.Add(this.moveWiggler);
@@ -88,35 +118,34 @@ namespace Celeste.Mod.UtilityControl
             base.Added(scene);
             //this.level = base.SceneAs<Level>();
             //Level level = scene as Level;
-            MTexture mTexture = GFX.Game["objects/crumbleBlock/outline"];
-            this.outline = new List<Image>();
-            //if (base.Width <= 8f)
-            {
-                Image image = new Image(mTexture.GetSubtexture(24, 0, 8, 8, null));
-                image.Color = Color.White * 0f;
-                base.Add(image);
-                this.outline.Add(image);
-            }
-            
+            //MTexture mTexture = GFX.Game["objects/crumbleBlock/outline"];
+            MTexture mTexture = GFX.Game["objects/utilitycontrol/popblockoutline"];
+
+            /*Outline*/
+            this.outline = new Image(mTexture.GetSubtexture(0, 0, 8, 8, null));
+            //this.outline.Color = this.color;
+            base.Add(this.outline);
+     
             base.Add(this.outlineFader = new Coroutine(true));
             this.outlineFader.RemoveOnComplete = false;
 
             /*Sprite*/
             //this.images = new List<Image>();
-            MTexture mTexture2 = GFX.Game["objects/crumbleBlock/" + AreaData.Get(scene).CrumbleBlock];
-            this.image = new Image(mTexture2.GetSubtexture(8, 0, 8, 8, null);
-            base.Add(this.image);
-            //base.Add(new Coroutine(this.Sequence(), true));
+            MTexture mTexture2 = GFX.Game["utilitycontrol/popblock"];
+            this.popblock = new Image(mTexture2.GetSubtexture(0, 0, 8, 8, null));
+            //this.image = new Image(mTexture2.GetSubtexture(8, 0, 8, 8, null);
+            //this.popblock.Color = this.color;
+            base.Add(this.popblock);
             
-
 
 
         }
 
         public override void Awake(Scene scene)
         {
-
-            this.PopList = scene.Entities.OfType<Solid>().ToList<Solid>();
+            this.popblock.Color = this.color;
+            this.outline.Color = this.color;
+            //this.PopList = scene.Entities.OfType<Solid>().ToList<Solid>();
             base.Awake(scene);
         }
 
@@ -173,12 +202,15 @@ namespace Celeste.Mod.UtilityControl
             for (float t = 0f; t < 1f; t += Engine.DeltaTime * 2f)
             {
                 Color color = Color.White * (from + (to - from) * Ease.CubeInOut(t));
+                this.outline.Color = color;
+                /*
                 foreach (Image img in this.outline)
                 {
                     img.Color = color;
                     //img = null;
                 }
-                List<Image>.Enumerator enumerator = default(List<Image>.Enumerator);
+                */
+                //List<Image>.Enumerator enumerator = default(List<Image>.Enumerator);
                 yield return null;
                 color = default(Color);
             }

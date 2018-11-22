@@ -67,21 +67,51 @@ namespace Celeste.Mod.UtilityControl
             //Logger.Log("UtilControl Debug...", entityData.ToString());
 
             //bool flag = ;
-            bool result = false ;
-            if (!entityData.Name.StartsWith("outback/"))
+            string header = "utilitycontrol/";
+            bool result ;
+            if (!entityData.Name.StartsWith(header))
             {
-                return false;
+                result = false;
             }
             else
             {
-                string name = entityData.Name.Substring(8);
+                int esketit = header.Length;
+                string name = entityData.Name.Substring(esketit);
                 string a = name;
                 //if (!(a == "movingtouchswitch"))
-                if (a == "movingtouchswitch")
+                if (!(name == "popblock"))
                 {
-                    Logger.Log(LogLevel.Info, "UtilControl", "Moving Touch switch detail  /** " + entityData.ToString() + " **/");
-                    //moving touch switch
-                    //bool result = false;
+                    if (!(name == "popblockdetonator"))
+                    {
+                        result = false;
+                    }
+                    else
+                    {
+                        level.Add(new PopBlock(entityData, offset));
+                        //level.Add(new PopBlockDetonator(entityData, offset);
+                        result = true;
+                    }
+                }
+                else
+                {
+
+                    int width = entityData.Width;
+                    int height = entityData.Height;
+                    Vector2 pos = entityData.Position + offset;
+                    Vector2 offsetNew = offset;
+                    for(int i = 0; i < width % 8; ++i)
+                    {
+                        for (int j = 0; j < height % 8; ++j)
+                        {
+
+                            offsetNew.X = i * 8f;
+                            offsetNew.Y = j * 8f;
+                            //offsetNew = offset + new Vector2()
+                            level.Add(new PopBlock(entityData, offset + offsetNew));
+                        }
+                    }
+                    //level.Add(new PopBlock(entityData, offset));
+                    result = true;
                 }
             }
             return result;

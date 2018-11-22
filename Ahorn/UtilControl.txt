@@ -1,0 +1,89 @@
+module UtilityControl
+
+using ..Ahorn, Maple
+
+PopBlock(x::Integer, y::Integer, width::Integer=defaultBlockWidth, height::Integer=defaultBlockHeight, color::String="Pink") = Maple.Entity("utilitycontrol/popblock", x=x, y=y, color=color)
+PopBlockDetonator(x::Integer, y::Integer, width::Integer=defaultBlockWidth, height::Integer=defaultBlockHeight, color::String="Pink") = Maple.Entity("utilitycontrol/popblockdetonator", x=x, y=y, color=color)
+
+
+#HelperFunctions
+
+
+const defaultBlockWidth = 16
+const defaultBlockHeight = 16
+
+const defaultSpikeWidth = 8
+const defaultSpikeHeight = 8
+
+placements = Dict{String, Ahorn.EntityPlacement}(
+	PopBlockDetonator
+
+
+)
+
+
+popNames = ["utilitycontrol/popblock", "utilitycontrol/popblockdetonator"]
+colorString = String["Purple","Blue","Red","Yellow","Green", "Pink"]
+detonationString = String["Slow", "Medium","Fast"]
+
+popBlockDetonationSpeed = Dict{String, Integer}(
+    "Slow" => 20,
+    "Medium" => 14,
+    "Fast" => 8
+)
+
+colors = Dict{String, Any}(
+    "Purple" => (1.0, 0.3, 1.0, 1.0),
+    "Blue" => (0.3, 0.3, 1.0, 1.0),
+    "Red" => (1.0, 0.3, 0.3, 1.0),
+    "Yellow" => (1.0, 1.0, 0.3, 1.0),
+    "Green" => (0.3, 1.0, 0.3, 1.0),
+	"Pink" => (1.0, 0.75, 0.8, 1.0)
+)
+
+#Placements
+for (colorName, _color) in colors
+    placements["PopBlock ($colorName)"] = Ahorn.EntityPlacement(
+        PopBlock,
+        "rectangle",
+        Dict{String, Any}(
+            "color" => colorName
+        )
+    )
+	
+	placements["PopBlockDetonator ($colorName)"] = Ahorn.EntityPlacement(
+        PopBlockDetonator,
+        "point",
+        Dict{String, Any}(
+            "color" => colorName
+        )
+    )
+	
+end
+
+#Detonator
+
+
+
+
+
+
+function editingOptions(entity::Maple.Entity)
+    if entity.name in popNames
+		dict = Dict{String, Any}(
+            "color" => colorString
+        )
+		
+		if(entity.name == "utilitycontrol/popblockdetonator")
+			dict["detonationSpeed"] = detonationString
+		end
+        return true, dict	
+    
+    end
+end
+
+
+
+#Rendering
+
+end
