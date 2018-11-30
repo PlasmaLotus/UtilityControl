@@ -34,14 +34,15 @@ namespace Celeste.Mod.UtilityControl
 
         // If you don't need to store any save data, => null
         public override Type SaveDataType => null;
-        
-
+        public List<MTexture> textures = null;
+        public static SpriteBank spriteBank;
         // Set up any hooks, event handlers and your mod in general here.
         // Load runs before Celeste itself has initialized properly.
         public override void Load()
         {
             Everest.Events.Level.OnLoadEntity += new Everest.Events.Level.LoadEntityHandler(this.OnLoadEntity);
             Logger.Log(LogLevel.Info, "UtilControl", "Loading Utility Control");
+            
         }
 
         // Optional, initialize anything after Celeste has initialized itself properly.
@@ -52,7 +53,10 @@ namespace Celeste.Mod.UtilityControl
         }
 
         // Optional, do anything requiring either the Celeste or mod content here.
-        //public override void LoadContent(){}
+        public override void LoadContent(bool firstLoad){
+            
+            spriteBank = new SpriteBank(GFX.Game, "Graphics/UtilCSprites.xml");
+        }
 
         // Unload the entirety of your mod's content, remove any event listeners and undo all hooks.
         public override void Unload()
@@ -97,11 +101,13 @@ namespace Celeste.Mod.UtilityControl
 
                     int width = entityData.Width;
                     int height = entityData.Height;
+
+                    Logger.Log(LogLevel.Debug, "UtilControl Popblock Check", "PopBlock Stack -- Width: " + width + " - Height: " + height + " ");
                     Vector2 pos = entityData.Position + offset;
                     Vector2 offsetNew = offset;
-                    for(int i = 0; i < width % 8; ++i)
+                    for(int i = 0; i < width / 8; ++i)
                     {
-                        for (int j = 0; j < height % 8; ++j)
+                        for (int j = 0; j < height / 8; ++j)
                         {
 
                             offsetNew.X = i * 8f;

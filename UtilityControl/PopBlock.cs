@@ -19,7 +19,7 @@ namespace Celeste.Mod.UtilityControl
         private string startLevel;
         private float startDisappearTime;
         private float currentDisappearTime;
-        private PlayerCollider collider;
+        private PlayerCollider pCollider;
 
 
         private Image popblock;
@@ -80,9 +80,11 @@ namespace Celeste.Mod.UtilityControl
             //this.color = popColorArray[(int)this.popColor];
         }
 
-        public PopBlock(Vector2 position, PopColor color):
-            base(position, 8f, 8f,false)
+        public PopBlock(Vector2 position, PopColor color) :
+            base(position, 8f, 8f, false)
+        //base(position)
         {
+
             //Color            
             //this.popColor = data.Enum<PopColor>("color", PopColor.Pink);
             this.popColor = color;
@@ -92,16 +94,18 @@ namespace Celeste.Mod.UtilityControl
             //this.startDisappearTime = (float)data.Enum<TimedTouchSwitch.DisappearTimes>("startDisappearTime", TimedTouchSwitch.DisappearTimes.Slow);
             //this.image = base.Get<Sprite>();
 
+
+
+
+            this.pCollider = new PlayerCollider(new Action<Player>(this.OnPlayer), Collider, Collider);
+            
             /*
-            this.collider = base.Get<PlayerCollider>();
-            this.collider.OnCollide = new Action<Player>(this.OnPlayer);
-           
             this.collider = new PlayerCollider(new Action<Player>(this.OnPlayer));
             base.Add(this.collider);
             */
 
             this.moveWiggler = Wiggler.Create(0.8f, 2f, null, false, false);
-            base.Add(this.moveWiggler);
+            //base.Add(this.moveWiggler);
 
 
             this.activationCooldown = 3f;
@@ -115,7 +119,7 @@ namespace Celeste.Mod.UtilityControl
         {
 
             ///Check for all other PopBlocks
-            base.Added(scene);
+            
             //this.level = base.SceneAs<Level>();
             //Level level = scene as Level;
             //MTexture mTexture = GFX.Game["objects/crumbleBlock/outline"];
@@ -131,14 +135,21 @@ namespace Celeste.Mod.UtilityControl
 
             /*Sprite*/
             //this.images = new List<Image>();
-            MTexture mTexture2 = GFX.Game["utilitycontrol/popblock"];
+            //MTexture mTexture2 = GFX.Game["objects/utilitycontrol/popblock"];
+            Sprite s = UtilityControlModule.spriteBank.Create("popblock");
+            s.GetFrame("idle", 0);
+            MTexture mTexture2 = GFX.Game["objects/crumbleBlock/default"];
+            MTexture whydoesntitwork = GFX.Game["objects/utilitycontrol/popblock"];
+
+            //MTexture m = 
+            //Everest.GFX
             this.popblock = new Image(mTexture2.GetSubtexture(0, 0, 8, 8, null));
             //this.image = new Image(mTexture2.GetSubtexture(8, 0, 8, 8, null);
             //this.popblock.Color = this.color;
             base.Add(this.popblock);
-            
 
 
+            base.Added(scene);
         }
 
         public override void Awake(Scene scene)

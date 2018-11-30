@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sprites>
+
+  <popblock path="objects/utilitycontrol/" start="idle">
+    <Justify x=".5" y=".5" />
+    <Loop id="idle" path="popblock" delay="0.1" />
+	
+  </popblock>
+
+</Sprites>
