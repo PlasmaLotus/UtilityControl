@@ -4,3 +4,5 @@ C:\Program Files (x86)\Steam\steamapps\common\Celeste\Mods\UtilityControl\Utilit
 C:\Program Files (x86)\Steam\steamapps\common\Celeste\Mods\UtilityControl\UtilityControl\bin\Debug\UtilityControl.pdb
 C:\Program Files (x86)\Steam\steamapps\common\Celeste\Mods\UtilityControl\UtilityControl\obj\Debug\UtilityControl.dll
 C:\Program Files (x86)\Steam\steamapps\common\Celeste\Mods\UtilityControl\UtilityControl\obj\Debug\UtilityControl.pdb
+C:\Program Files (x86)\Steam\steamapps\common\Celeste\Mods\UtilityControl\UtilityControl\bin\Debug\Celeste.exe
+C:\Program Files (x86)\Steam\steamapps\common\Celeste\Mods\UtilityControl\UtilityControl\obj\Debug\UtilityControl.csproj.CopyComplete

@@ -17,7 +17,6 @@ namespace Celeste.Mod.UtilityControl
     [SettingName("modoptions_utilityuontrolmodule_title")]
     public class UtilityControlSettings : EverestModuleSettings
     {
-
         // SettingName also works on props, defaulting to
         // modoptions_[typename without settings]_[propname]
 
@@ -41,6 +40,9 @@ namespace Celeste.Mod.UtilityControl
         [SettingRange(0, 10)]
         public int TheOneToCheckOut { get; set; } = 1;
 
+        [SettingInGame(true)] // Only show this in the in-game menu.
+        public string SomeText { get; set; } = "";
+           
         // Custom entry creation methods are always called Create[propname]Entry
         // and offer an alternative to overriding CreateModMenuSection in your module class.
         /*
