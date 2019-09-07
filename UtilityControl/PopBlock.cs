@@ -99,8 +99,6 @@ namespace Celeste.Mod.UtilityControl
             //this.image = base.Get<Sprite>();
 
 
-
-
             this.pCollider = new PlayerCollider(new Action<Player>(this.OnPlayer), Collider, Collider);
             
             /*
@@ -142,8 +140,8 @@ namespace Celeste.Mod.UtilityControl
             //MTexture mTexture2 = GFX.Game["objects/utilitycontrol/popblock"];
             Sprite s = UtilityControlModule.spriteBank.Create("popblock");
             s.GetFrame("idle", 0);
-            MTexture mTexture2 = GFX.Game["objects/crumbleBlock/default"];
-            MTexture whydoesntitwork = GFX.Game["objects/utilitycontrol/popblock"];
+            //MTexture mTexture2 = GFX.Game["objects/crumbleBlock/default"];
+            MTexture mTexture2 = GFX.Game["objects/utilitycontrol/popblock"];
 
             //MTexture m = 
             //Everest.GFX
