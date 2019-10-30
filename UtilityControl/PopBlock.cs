@@ -39,6 +39,10 @@ namespace Celeste.Mod.UtilityControl
         private Image image;
         private PopColor popColor;
         private Color color;
+        /*
+        private prvGlow0;
+        private prvGlow11;
+        */
         private enum DisappearTimes
         {
             Fast = 5,

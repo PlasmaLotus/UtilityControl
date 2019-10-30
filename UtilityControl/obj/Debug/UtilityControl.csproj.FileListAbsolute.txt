@@ -6,3 +6,12 @@ C:\Program Files (x86)\Steam\steamapps\common\Celeste\Mods\UtilityControl\Utilit
 C:\Program Files (x86)\Steam\steamapps\common\Celeste\Mods\UtilityControl\UtilityControl\obj\Debug\UtilityControl.pdb
 C:\Program Files (x86)\Steam\steamapps\common\Celeste\Mods\UtilityControl\UtilityControl\bin\Debug\Celeste.exe
 C:\Program Files (x86)\Steam\steamapps\common\Celeste\Mods\UtilityControl\UtilityControl\obj\Debug\UtilityControl.csproj.CopyComplete
+D:\Program Files\Steam\steamapps\common\Celeste\Mods\UtilityControl\UtilityControl\bin\Debug\UtilityControl.dll
+D:\Program Files\Steam\steamapps\common\Celeste\Mods\UtilityControl\UtilityControl\bin\Debug\UtilityControl.pdb
+D:\Program Files\Steam\steamapps\common\Celeste\Mods\UtilityControl\UtilityControl\bin\Debug\Celeste.exe
+D:\Program Files\Steam\steamapps\common\Celeste\Mods\UtilityControl\UtilityControl\bin\Debug\Celeste.pdb
+D:\Program Files\Steam\steamapps\common\Celeste\Mods\UtilityControl\UtilityControl\obj\Debug\UtilityControl.csprojAssemblyReference.cache
+D:\Program Files\Steam\steamapps\common\Celeste\Mods\UtilityControl\UtilityControl\obj\Debug\UtilityControl.csproj.CoreCompileInputs.cache
+D:\Program Files\Steam\steamapps\common\Celeste\Mods\UtilityControl\UtilityControl\obj\Debug\UtilityControl.csproj.CopyComplete
+D:\Program Files\Steam\steamapps\common\Celeste\Mods\UtilityControl\UtilityControl\obj\Debug\UtilityControl.dll
+D:\Program Files\Steam\steamapps\common\Celeste\Mods\UtilityControl\UtilityControl\obj\Debug\UtilityControl.pdb

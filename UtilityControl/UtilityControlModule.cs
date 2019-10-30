@@ -150,7 +150,7 @@ namespace Celeste.Mod.UtilityControl
             mAreaMode = level.Session.Area.Mode;
             Logger.Log(LogLevel.Info, UC_ModuleName, "LevelLoad: Area (" + DeathModeToString(mAreaMode) +") for DeathCounter.");
             SetDeathIconMode(mAreaMode);
-            Settings.AreaDeathMode = DeathModeToString(this.mAreaMode);
+            //Settings.AreaDeathMode = DeathModeToString(this.mAreaMode);
         }
 
 
