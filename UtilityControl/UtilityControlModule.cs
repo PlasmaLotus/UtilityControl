@@ -114,7 +114,9 @@ namespace Celeste.Mod.UtilityControl
                     }
                     else
                     {
-                        level.Add(new PopBlock(entityData, offset));
+                        //TODO: Add and Create PopBlockDetonator
+                        createAndAddPopBlock(level, entityData, offset);
+                        //level.Add(new PopBlock(entityData, offset));
                         //level.Add(new PopBlockDetonator(entityData, offset);
                         result = true;
                     }
@@ -134,7 +136,9 @@ namespace Celeste.Mod.UtilityControl
                             offsetNew.X = i * 8f;
                             offsetNew.Y = j * 8f;
                             //offsetNew = offset + new Vector2()
-                            level.Add(new PopBlock(entityData, offset + offsetNew));
+
+                            createAndAddPopBlock(level, entityData, offset + offsetNew);
+                            //level.Add(new PopBlock(entityData, offset + offsetNew));
                         }
                     }
                     //level.Add(new PopBlock(entityData, offset));
@@ -164,9 +168,12 @@ namespace Celeste.Mod.UtilityControl
         }
         */
 
-        public void createAndAddPopBlock()
+        public PopBlock createAndAddPopBlock(Level level, EntityData entityData, Vector2 offset)
         {
-
+            PopBlock pb = new PopBlock(entityData, offset);
+            mPopBlocks.Add(pb);
+            level.Add(pb);
+            return pb;
         }
 
 
