@@ -26,8 +26,7 @@ namespace Celeste.Mod.UtilityControl
         MTexture _DeathIconA;
         MTexture _DeathIconB;
         MTexture _DeathIconC;
-
-
+        List<PopBlock> mPopBlocks;
 
 
         // Only one alive module instance can exist at any given time.
@@ -127,7 +126,7 @@ namespace Celeste.Mod.UtilityControl
 
                     Logger.Log(LogLevel.Debug, "UtilControl Popblock Check", "PopBlock Stack -- Width: " + width + " - Height: " + height + " ");
                     Vector2 pos = entityData.Position + offset;
-                    Vector2 offsetNew = offset;
+                    Vector2 offsetNew = Vector2.Zero;
                     for(int i = 0; i < width / 8; ++i)
                     {
                         for (int j = 0; j < height / 8; ++j)
@@ -144,6 +143,8 @@ namespace Celeste.Mod.UtilityControl
             }
             return result;
         }
+
+
 
         public void OnLoadLevel(Level level, Player.IntroTypes playerIntro, bool isFromLoader)
         {
@@ -162,6 +163,12 @@ namespace Celeste.Mod.UtilityControl
             //menu.Add(new TextMenu.SubHeader(Dialog.Clean("modoptions_ghostmodule_overridden") + " | v." + Metadata.VersionString));            
         }
         */
+
+        public void createAndAddPopBlock()
+        {
+
+        }
+
 
         public static void SetDeathModeOverride(Boolean ovr)
         {

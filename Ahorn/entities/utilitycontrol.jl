@@ -131,6 +131,13 @@ function Ahorn.render(ctx::Ahorn.Cairo.CairoContext, entity::PopBlock)
 	if haskey(colors, color)
         Ahorn.drawRectangle(ctx, x, y, width, height, colors[color].* fillMultiplier, colors[color] .* borderMultiplier)
     end
+	
+	#for i in 0:(width/defaultBlockWidth)
+		#for j in 0:(height/defaultBlockHeight)
+			#Ahorn.drawImage(ctx, texture, i, j, 0, 0, defaultBlockWidth, defaultBlockHeight)
+			#Ahorn.drawSprite(ctx, texture,  width / 2, height / 2)
+		#end
+	#end
 	#Ahorn.drawSprite(ctx, texture,  width / 2, height / 2)
 	#TODO: draw multiple sprites
 end
